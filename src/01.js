@@ -1,7 +1,7 @@
 const vm = require('./vm');
 
 const machine = vm({
-    inputFile: 'day1.txt',
+    inputFile: '01.txt',
     dataTransformer: data => data.split('\n').map(parseFloat),
 });
 

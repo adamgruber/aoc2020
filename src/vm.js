@@ -20,7 +20,7 @@ class VM {
         }
 
         const filePath = path.resolve(
-            path.join(__dirname, 'inputs', inputFile)
+            path.join(__dirname, '../inputs', inputFile)
         );
 
         try {

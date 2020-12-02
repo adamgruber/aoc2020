@@ -14,7 +14,7 @@ const dataTransformer = data =>
     });
 
 const machine = vm({
-    inputFile: 'day2.txt',
+    inputFile: '02.txt',
     dataTransformer,
 });
 
