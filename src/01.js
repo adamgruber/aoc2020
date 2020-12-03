@@ -8,12 +8,12 @@ const machine = vm({
 /**
  * Given an array of values, find the values that, when added, produce the
  * given sum.
- * @param {number} sum Sum that numbers should produce
  * @param {array} values Array of potential addends
+ * @param {number} sum Sum that numbers should produce
  * @param {number} numAddends Number of addends to find [default:2]
  * @return {number}
  */
-function findAddendsForSum(sum, values, numAddends) {
+function findAddendsForSum(values, sum, numAddends) {
     let addends = new Set();
 
     for (let i = 0; i < values.length; i += 1) {
@@ -22,7 +22,7 @@ function findAddendsForSum(sum, values, numAddends) {
 
         if (numAddends > 2) {
             Array.from(
-                findAddendsForSum(addend2, values, numAddends - 1)
+                findAddendsForSum(values, addend2, numAddends - 1)
             ).forEach(addend => addends.add(addend));
         } else {
             if (values.includes(addend2)) {
@@ -40,12 +40,7 @@ function multiplySetItems(set) {
     return Array.from(set).reduce((acc, val) => acc * val);
 }
 
-// Part 1
-const pt1 = findAddendsForSum(2020, machine.data);
-const pt1Solution = multiplySetItems(pt1);
-console.log(pt1, pt1Solution);
-
-// Part 2
-const pt2 = findAddendsForSum(2020, machine.data, 3);
-const pt2Solution = multiplySetItems(pt2);
-console.log(pt2, pt2Solution);
+module.exports.machine = machine;
+module.exports.run = function run(data, ...args) {
+    return multiplySetItems(findAddendsForSum(data, ...args));
+};
