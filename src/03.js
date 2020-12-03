@@ -1,9 +1,6 @@
 const vm = require('./vm');
 
-const deltaX = 3;
-const deltaY = 1;
 const TREE = '#';
-
 const dataTransformer = data => data.split('\n');
 
 const machineA = vm({
