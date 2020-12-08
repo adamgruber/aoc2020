@@ -20,7 +20,7 @@ const requiredFields = {
     hcl: val => val.match(/^#[0-9a-f]{6}/),
     ecl: val => ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'].includes(val),
     pid: val => val.length === 9 && /\d{9}/.test(val),
-    cid: val => true,
+    cid: () => true,
 };
 
 const dataTransformer = data => data.replace(/\n/g, ' ').split('  ');
@@ -44,7 +44,7 @@ const isValidPassport = passport => {
 
     const matches = passport.matchAll(/(\w{3}):([#\w]+)/g);
     for (const match of matches) {
-        const [_, field, value] = match;
+        const [, field, value] = match;
         if (!requiredFields[field](value)) {
             return false;
         }

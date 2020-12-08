@@ -1,4 +1,3 @@
-const assert = require('assert');
 const vm = require('./vm');
 
 const dataTransformer = data =>
@@ -6,9 +5,9 @@ const dataTransformer = data =>
         rule = rule.split(' bags contain ');
         const decl = rule[0];
         const def = rule[1].split(', ');
-        const [_, variant, color] = decl.match(/^(\w+) (\w+)/);
+        const [, variant, color] = decl.match(/^(\w+) (\w+)/);
         const defObj = def.reduce((acc, d) => {
-            const [_, count, v, c] = d.match(/^(\d+) (\w+) (\w+)/) || [];
+            const [, count, v, c] = d.match(/^(\d+) (\w+) (\w+)/) || [];
             return count
                 ? {
                       ...acc,
@@ -25,11 +24,6 @@ const dataTransformer = data =>
 
 const { data: input } = vm({
     inputFile: '07.txt',
-    dataTransformer,
-});
-
-const { data: input2 } = vm({
-    inputFile: '07-sample2.txt',
     dataTransformer,
 });
 

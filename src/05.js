@@ -83,4 +83,4 @@ const findMissingSeats = passes => {
 // [127,7]
 
 console.log(findMissingSeats(parsePasses(machineA.data)));
-// console.log(findHighestSeat(machineA.data));
+console.log(findHighestSeat(machineA.data));

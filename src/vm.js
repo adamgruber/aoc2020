@@ -1,10 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 
-function sum(...args) {
-    return args.reduce((acc, val) => acc + val, 0);
-}
-
 class VM {
     constructor(options) {
         this.options = options;
@@ -20,6 +16,7 @@ class VM {
         }
 
         const filePath = path.resolve(
+            // eslint-disable-next-line no-undef
             path.join(__dirname, '../inputs', inputFile)
         );
 
